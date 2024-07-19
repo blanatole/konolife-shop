@@ -164,7 +164,7 @@ const Products = () => {
         <>
             <div className="right-content w-100">
                 <div className="card shadow border-0 w-100 flex-row p-4 align-items-center">
-                    <h5 className="mb-0">Danh sách sản phẩm</h5>
+                    <h5 className="mb-0">LIST PRODUCTS</h5>
 
                     <div className="ml-auto d-flex align-items-center">
 

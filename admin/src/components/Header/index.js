@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/kono_logo.png';
 import Button from '@mui/material/Button';
 import { MdMenuOpen } from "react-icons/md";
 import { MdOutlineMenu } from "react-icons/md";
@@ -9,7 +9,6 @@ import SearchBox from "../SearchBox";
 import { MdOutlineLightMode } from "react-icons/md";
 import { MdNightlightRound } from "react-icons/md";
 
-import { MdDarkMode } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa6";
@@ -87,11 +86,11 @@ const Header = () => {
             <header className="d-flex align-items-center">
                 <div className="container-fluid w-100">
                     <div className="row d-flex align-items-center w-100">
-                        {/* Logo Wraooer */}
+                        {/* Logo Wrapper */}
                         <div className="col-sm-2 part1 pr-0">
                             <Link to={'/'} className="d-flex align-items-center logo">
                                 <img src={logo} />
-                                <span className="ml-2">ECOMMERCE</span>
+                                <span className="ml-2">KONOLIFE</span>
                             </Link>
                         </div>
 
@@ -148,7 +147,7 @@ const Header = () => {
                                                 <div className='dropdownInfo'>
                                                     <h4>
                                                         <span>
-                                                            <b>Mahmudul </b>
+                                                            <b>Blanatole </b>
                                                             added to his favorite list
                                                             <b> Leather belt steve madden</b>
                                                         </span>
@@ -171,31 +170,7 @@ const Header = () => {
                                                 <div className='dropdownInfo'>
                                                     <h4>
                                                         <span>
-                                                            <b>Mahmudul </b>
-                                                            added to his favorite list
-                                                            <b> Leather belt steve madden</b>
-                                                        </span>
-                                                    </h4>
-                                                    <p className='text-sky mb-0'>few seconds ago</p>
-                                                </div>
-                                            </div>
-                                        </MenuItem>
-
-
-                                        <MenuItem onClick={handleCloseMyAccDrop}>
-                                            <div className='d-flex'>
-                                                <div>
-                                                    <div className="userImg">
-                                                        <span className="rounded-circle">
-                                                            <img src="https://mironcoder-hotash.netlify.app/images/avatar/01.webp" />
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div className='dropdownInfo'>
-                                                    <h4>
-                                                        <span>
-                                                            <b>Mahmudul </b>
+                                                            <b>Blanatole </b>
                                                             added to his favorite list
                                                             <b> Leather belt steve madden</b>
                                                         </span>
@@ -219,7 +194,7 @@ const Header = () => {
                                                 <div className='dropdownInfo'>
                                                     <h4>
                                                         <span>
-                                                            <b>Mahmudul </b>
+                                                            <b>Blanatole </b>
                                                             added to his favorite list
                                                             <b> Leather belt steve madden</b>
                                                         </span>
@@ -243,7 +218,7 @@ const Header = () => {
                                                 <div className='dropdownInfo'>
                                                     <h4>
                                                         <span>
-                                                            <b>Mahmudul </b>
+                                                            <b>Blanatole </b>
                                                             added to his favorite list
                                                             <b> Leather belt steve madden</b>
                                                         </span>
@@ -267,7 +242,31 @@ const Header = () => {
                                                 <div className='dropdownInfo'>
                                                     <h4>
                                                         <span>
-                                                            <b>Mahmudul </b>
+                                                            <b>Blanatole </b>
+                                                            added to his favorite list
+                                                            <b> Leather belt steve madden</b>
+                                                        </span>
+                                                    </h4>
+                                                    <p className='text-sky mb-0'>few seconds ago</p>
+                                                </div>
+                                            </div>
+                                        </MenuItem>
+
+
+                                        <MenuItem onClick={handleCloseMyAccDrop}>
+                                            <div className='d-flex'>
+                                                <div>
+                                                    <div className="userImg">
+                                                        <span className="rounded-circle">
+                                                            <img src="https://mironcoder-hotash.netlify.app/images/avatar/01.webp" />
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div className='dropdownInfo'>
+                                                    <h4>
+                                                        <span>
+                                                            <b>Blanatole </b>
                                                             added to his favorite list
                                                             <b> Leather belt steve madden</b>
                                                         </span>

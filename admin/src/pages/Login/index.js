@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import Logo from '../../assets/images/logo.webp';
+import Logo from '../../assets/images/kono_logo.png';
 import patern from '../../assets/images/pattern.webp';
 import { MyContext } from '../../App';
 import { MdEmail } from "react-icons/md";
@@ -247,20 +247,20 @@ const Login = () => {
             <section className="loginSection">
                 <div className="loginBox">
                     <div className='logo text-center'>
-                        <img src={Logo} width="60px" />
-                        <h5 className='font-weight-bold'>Login to Hotash</h5>
+                        <img src={Logo} width="150px" />
+                        <h5 className='font-weight-bold'>Login to Kono Admin</h5>
                     </div>
 
                     <div className='wrapper mt-3 card border'>
                         <form onSubmit={signIn}>
                             <div className={`form-group position-relative ${inputIndex === 0 && 'focus'}`}>
                                 <span className='icon'><MdEmail /></span>
-                                <input type='text' className='form-control' placeholder='enter your email' onFocus={() => focusInput(0)} onBlur={() => setInputIndex(null)} autoFocus name="email" onChange={onchangeInput} />
+                                <input type='text' className='form-control' placeholder='Enter your email' onFocus={() => focusInput(0)} onBlur={() => setInputIndex(null)} autoFocus name="email" onChange={onchangeInput} />
                             </div>
 
                             <div className={`form-group position-relative ${inputIndex === 1 && 'focus'}`}>
                                 <span className='icon'><RiLockPasswordFill /></span>
-                                <input type={`${isShowPassword === true ? 'text' : 'password'}`} className='form-control' placeholder='enter your password'
+                                <input type={`${isShowPassword === true ? 'text' : 'password'}`} className='form-control' placeholder='Enter your password'
                                     onFocus={() => focusInput(1)} onBlur={() => setInputIndex(null)} name="password" onChange={onchangeInput} />
 
                                 <span className='toggleShowPassword' onClick={() => setisShowPassword(!isShowPassword)}>
@@ -301,7 +301,7 @@ const Login = () => {
                     <div className='wrapper mt-3 card border footer p-3'>
                         <span className='text-center'>
                             Don't have an account?
-                            <Link to={'/signUp'} className='link color ml-2'>Register</Link>
+                            <Link to={'/signUp'} className='link color ml-2'> Register</Link>
                         </span>
                     </div>
 

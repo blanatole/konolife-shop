@@ -136,7 +136,7 @@ const Orders = () => {
                             <thead className="thead-dark">
                                 <tr>
 
-                                    <th>Paymant Id</th>
+                                    <th>Order Id</th>
                                     <th>Products</th>
                                     <th>Name</th>
                                     <th>Phone Number</th>

@@ -178,7 +178,7 @@ const ProductDetails = () => {
                                         <div className="row">
                                             <div className="col-sm-3 d-flex align-items-center">
                                                 <span className="icon"><MdFilterVintage /></span>
-                                                <span className="name">SIZE</span>
+                                                <span className="name">Size</span>
                                             </div>
 
                                             <div className="col-sm-9">
@@ -209,7 +209,7 @@ const ProductDetails = () => {
                                         <div className="row">
                                             <div className="col-sm-3 d-flex align-items-center">
                                                 <span className="icon"><MdFilterVintage /></span>
-                                                <span className="name">Weight</span>
+                                                <span className="name">Khối lượng</span>
                                             </div>
 
                                             <div className="col-sm-9">
@@ -279,102 +279,7 @@ const ProductDetails = () => {
 
                         <br />
 
-                        {
-                            /*
-                                 <h6 className="mt-4 mb-4">Rating Analytics</h6>
-        
-                                <div className="ratingSection">
-                                    <div className="ratingrow d-flex align-items-center">
-                                        <span className="col1">
-                                            5 Star
-                                        </span>
-        
-                                        <div className="col2">
-                                            <div className="progress">
-                                                <div className="progress-bar" style={{ width: '70%' }}></div>
-                                            </div>
-                                        </div>
-        
-                                        <span className="col3">
-                                            (22)
-                                        </span>
-                                    </div>
-        
-                                    <div className="ratingrow d-flex align-items-center">
-                                        <span className="col1">
-                                            4 Star
-                                        </span>
-        
-                                        <div className="col2">
-                                            <div className="progress">
-                                                <div className="progress-bar" style={{ width: '50%' }}></div>
-                                            </div>
-                                        </div>
-        
-                                        <span className="col3">
-                                            (22)
-                                        </span>
-                                    </div>
-        
-                                    <div className="ratingrow d-flex align-items-center">
-                                        <span className="col1">
-                                            3 Star
-                                        </span>
-        
-                                        <div className="col2">
-                                            <div className="progress">
-                                                <div className="progress-bar" style={{ width: '50%' }}></div>
-                                            </div>
-                                        </div>
-        
-                                        <span className="col3">
-                                            (2)
-                                        </span>
-                                    </div>
-        
-        
-        
-                                    <div className="ratingrow d-flex align-items-center">
-                                        <span className="col1">
-                                            2 Star
-                                        </span>
-        
-                                        <div className="col2">
-                                            <div className="progress">
-                                                <div className="progress-bar" style={{ width: '20%' }}></div>
-                                            </div>
-                                        </div>
-        
-                                        <span className="col3">
-                                            (2)
-                                        </span>
-                                    </div>
-        
-        
-                                    <div className="ratingrow d-flex align-items-center">
-                                        <span className="col1">
-                                            1 Star
-                                        </span>
-        
-                                        <div className="col2">
-                                            <div className="progress">
-                                                <div className="progress-bar" style={{ width: '50%' }}></div>
-                                            </div>
-                                        </div>
-        
-                                        <span className="col3">
-                                            (2)
-                                        </span>
-                                    </div>
-        
-                                </div>
-        
-                            */
-                        }
-
-
-                        <br />
-
+                    
 
                         {
                             reviewsData?.length !== 0 &&

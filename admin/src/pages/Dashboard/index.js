@@ -306,8 +306,8 @@ const Dashboard = () => {
                                                 <td>{item?.brand}</td>
                                                 <td>
                                                     <div style={{ width: '70px' }}>
-                                                        <del className="old">Rs {item?.oldPrice}</del>
-                                                        <span className="new text-danger">Rs {item?.price}</span>
+                                                        <del className="old">{item?.oldPrice} đ</del>
+                                                        <span className="new text-danger">{item?.price} đ</span>
                                                     </div>
                                                 </td>
                                                 <td><Rating name="read-only" defaultValue={item?.rating} precision={0.5} size="small" readOnly /></td>
