@@ -256,10 +256,10 @@ const ProductDetails = () => {
 
                             <div className="d-flex info mb-3">
                                 {
-                                    productData?.oldPrice != null && (<span className="oldPrice mr-2">{productData?.oldPrice} đ</span>)
+                                    productData?.oldPrice != null && (<span className="oldPrice mr-2">{productData?.oldPrice.toLocaleString()} đ</span>)
                                 }
                                 
-                                <span className="netPrice text-danger">{productData?.price} đ</span>
+                                <span className="netPrice text-danger">{productData?.price.toLocaleString()} đ</span>
                             </div>
 
                             {

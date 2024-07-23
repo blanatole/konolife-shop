@@ -119,7 +119,7 @@ const ProductModal = (props) => {
                     context.setAlertBox({
                         open: true,
                         error: false,
-                        msg: "Sản phẩm đã được thêm vào giỏ hàng!"
+                        msg: "Sản phẩm đã được thêm vào yêu thích!"
                     })
                 } else {
                     context.setAlertBox({
