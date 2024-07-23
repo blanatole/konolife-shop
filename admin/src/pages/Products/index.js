@@ -277,7 +277,6 @@ const Products = () => {
                                     <th>PRICE</th>
                                     <th>RATING</th>
                                     <th>DISCOUNT</th>
-                                    <th>PRODUCT RAMS</th>
                                     <th>PRODUCT WEIGHT</th>
                                     <th>PRODUCT SIZE</th>
                                     <th>ACTION</th>
@@ -309,26 +308,22 @@ const Products = () => {
                                                     </div>
                                                 </td>
 
-                                                <td>{item?.category?.name}</td>
-                                                <td>{item?.subCat?.subCat}</td>
+                                                <td>{item?.category?.name}</td> 
+                                                <td>{item?.subCat}</td>
+                                                {
+                                                    console.log(item)
+                                                }
                                                 <td>{item?.brand}</td>
                                                 <td>
                                                     <div style={{ width: '70px' }}>
-                                                        <del className="old">{item?.oldPrice} đ</del>
-                                                        <span className="new text-danger">{item?.price} đ</span>
+                                                        {
+                                                            item?.oldPrice != null && (<del className="old">{item?.oldPrice.toLocaleString()} đ</del>)
+                                                        }                                              
+                                                        <span className="new text-danger">{item?.price.toLocaleString()} đ</span>
                                                     </div>
                                                 </td>
                                                 <td><Rating name="read-only" defaultValue={item?.rating} precision={0.5} size="small" readOnly /></td>
-
                                                 <td>{item?.discount}</td>
-
-                                                <td>
-                                                    {item?.productRam?.map((ram) => {
-                                                        return (
-                                                            <span className="badge badge-primary mr-2">{ram}</span>
-                                                        )
-                                                    })}
-                                                </td>
 
                                                 <td>
                                                     {item?.productWeight?.map((weight) => {

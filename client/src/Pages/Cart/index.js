@@ -84,7 +84,7 @@ const Cart = () => {
             context.setAlertBox({
                 open: true,
                 error: false,
-                msg: "item removed from cart!"
+                msg: "Đã xóa sản phẩm khỏi giỏ hàng!"
             })
 
             const user = JSON.parse(localStorage.getItem("user"));
@@ -103,8 +103,8 @@ const Cart = () => {
 
             <section className="section cartPage">
                 <div className="container">
-                    <h2 className="hd mb-1">Your Cart</h2>
-                    <p>There are <b className="text-red">{cartData?.length}</b> products in your cart</p>
+                    <h2 className="hd mb-1">Giỏ hàng</h2>
+                    <p>Bạn có <b className="text-red">{cartData?.length}</b> sản phẩm trong giỏ hàng</p>
 
                     {
                         cartData?.length !== 0 ?
@@ -116,11 +116,11 @@ const Cart = () => {
                                         <table className="table">
                                             <thead>
                                                 <tr>
-                                                    <th width="35%">Product</th>
-                                                    <th width="15%">Unit Price</th>
-                                                    <th width="25%">Quantity</th>
-                                                    <th width="15%">Subtotal</th>
-                                                    <th width="10%">Remove</th>
+                                                    <th width="35%">Sản phẩm</th>
+                                                    <th width="15%">Đơn giá</th>
+                                                    <th width="25%">Số lượng</th>
+                                                    <th width="15%">Thành tiền</th>
+                                                    <th width="10%">Xóa</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -147,11 +147,11 @@ const Cart = () => {
                                                                         </div>
                                                                     </Link>
                                                                 </td>
-                                                                <td width="15%">{item?.price} đ</td>
+                                                                <td width="15%">{item?.price.toLocaleString()} đ</td>
                                                                 <td width="25%">
                                                                     <QuantityBox quantity={quantity} item={item} selectedItem={selectedItem} value={item?.quantity} />
                                                                 </td>
-                                                                <td width="15%">{item?.subTotal} đ</td>
+                                                                <td width="15%">{item?.subTotal.toLocaleString()} đ</td>
                                                                 <td width="10%"><span className="remove" onClick={() => removeItem(item?._id)}><IoIosClose /></span></td>
                                                             </tr>
                                                         )
@@ -166,10 +166,10 @@ const Cart = () => {
 
                                 <div className="col-md-3">
                                     <div className="card border p-3 cartDetails">
-                                        <h4>CART TOTALS</h4>
+                                        <h4></h4>
 
                                         <div className="d-flex align-items-center mb-3">
-                                            <span>Subtotal</span>
+                                            <span>Tạm tính</span>
                                             <span className="ml-auto text-red font-weight-bold">
                                             {
                                                 (context.cartData?.length !== 0 ?
@@ -179,8 +179,8 @@ const Cart = () => {
                                         </div>
 
                                         <div className="d-flex align-items-center mb-3">
-                                            <span>Shipping</span>
-                                            <span className="ml-auto"><b>Free</b></span>
+                                            <span>Phí giao hàng</span>
+                                            <span className="ml-auto"><b>Miễn phí</b></span>
                                         </div>
 
                                         {/* <div className="d-flex align-items-center mb-3">
@@ -189,7 +189,7 @@ const Cart = () => {
                                         </div> */}
 
                                         <div className="d-flex align-items-center">
-                                            <span>Total</span>
+                                            <span>Tổng tiền</span>
                                             <span className="ml-auto text-red font-weight-bold">
                                             {
                                                 (context.cartData?.length !== 0 ?
@@ -201,7 +201,7 @@ const Cart = () => {
 
                                         <br />
                                         <Link to="/checkout">
-                                            <Button className='btn-blue bg-red btn-lg btn-big'><IoBagCheckOutline /> &nbsp; Checkout</Button>
+                                            <Button className='btn-blue bg-red btn-lg btn-big w-100'><IoBagCheckOutline /> &nbsp; Xác nhận đơn hàng</Button>
                                         </Link>
 
                                     </div>
@@ -213,9 +213,9 @@ const Cart = () => {
 
                             <div className="empty d-flex align-items-center justify-content-center flex-column">
                                 <img src={emprtCart} width="150" />
-                                <h3>Your Cart is currently empty</h3>
+                                <h3>Giỏ hàng của bạn đang trống đó....</h3>
                                 <br />
-                                <Link to="/"> <Button className='btn-blue bg-red btn-lg btn-big btn-round'><FaHome /> &nbsp; Continue Shopping</Button></Link>
+                                <Link to="/"> <Button className='btn-blue bg-red btn-lg btn-big btn-round'><FaHome /> &nbsp; Tiếp tục mua sắm</Button></Link>
                             </div>
 
 

@@ -284,7 +284,6 @@ router.post(`/recentlyViewd`, async (req, res) => {
             rating: req.body.rating,
             isFeatured: req.body.isFeatured,
             discount: req.body.discount,
-            productRam: req.body.productRam,
             size: req.body.size,
             productWeight: req.body.productWeight,
     
@@ -340,7 +339,6 @@ router.post(`/create`, async (req, res) => {
         rating: req.body.rating,
         isFeatured: req.body.isFeatured,
         discount: req.body.discount,
-        productRam: req.body.productRam,
         size: req.body.size,
         productWeight: req.body.productWeight,
         location: req.body.location!=="" ? req.body.location : "All",
@@ -455,7 +453,6 @@ router.put('/:id', async (req, res) => {
             rating: req.body.rating,
             numReviews: req.body.numReviews,
             isFeatured: req.body.isFeatured,
-            productRam: req.body.productRam,
             size: req.body.size,
             productWeight: req.body.productWeight,
             location: req.body.location,

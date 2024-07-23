@@ -65,11 +65,9 @@ const ProductUpload = () => {
     const [categoryVal, setcategoryVal] = useState('');
     const [subCatVal, setSubCatVal] = useState('');
 
-    const [productRams, setProductRAMS] = useState([]);
     const [productWeight, setProductWeight] = useState([]);
     const [productSize, setProductSize] = useState([]);
 
-    const [productRAMSData, setProductRAMSData] = useState([]);
     const [productWEIGHTData, setProductWEIGHTData] = useState([]);
     const [productSIZEData, setProductSIZEData] = useState([]);
 
@@ -103,7 +101,6 @@ const ProductUpload = () => {
         rating: 5,
         isFeatured: null,
         discount: null,
-        productRam: [],
         size: [],
         productWeight: [],
         location:""
@@ -129,17 +126,26 @@ const ProductUpload = () => {
             })
         });
 
+        
+
 
         fetchDataFromApi("/api/productWeight").then((res) => {
             setProductWEIGHTData(res);
-        });
-        fetchDataFromApi("/api/productRAMS").then((res) => {
-            setProductRAMSData(res);
         });
         fetchDataFromApi("/api/productSIZE").then((res) => {
             setProductSIZEData(res);
         });
     }, []);
+
+    useEffect (() => {
+        if (formFields.oldPrice != null && formFields.price != null) {
+            const discount = Math.round((formFields.oldPrice - formFields.price) * 100 / formFields.oldPrice);
+            setFormFields(prevState => ({
+                ...prevState,
+                discount: discount
+            }));
+        }
+    }, [formFields.oldPrice, formFields.price])
 
 
     useEffect(()=>{
@@ -174,37 +180,7 @@ const ProductUpload = () => {
         setSubCatVal(event.target.value);
     };
 
-
-    const handleChangeProductRams = (event) => {
-        // setProductRAMS(event.target.value);
-        // setFormFields(() => ({
-        //     ...formFields,
-        //     productRam: event.target.value
-        // }))
-
-        const {
-            target: { value },
-        } = event;
-        setProductRAMS(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
-
-        formFields.productRam = value;
-
-
-    };
-
-
     const handleChangeProductWeight = (event) => {
-        // setProductWeight(event.target.value);
-        // setFormFields(() => ({
-        //     ...formFields,
-        //     productWeight: event.target.value
-        // }))
-
-
-
         const {
             target: { value },
         } = event;
@@ -218,12 +194,6 @@ const ProductUpload = () => {
     };
 
     const handleChangeProductSize = (event) => {
-        // setProductSize(event.target.value);
-        // setFormFields(() => ({
-        //     ...formFields,
-        //     size: event.target.value
-        // }))
-
         const {
             target: { value },
         } = event;
@@ -388,10 +358,8 @@ const ProductUpload = () => {
         formdata.append('rating', formFields.rating);
         formdata.append('isFeatured', formFields.isFeatured);
         formdata.append('discount', formFields.discount);
-        formdata.append('productRam', formFields.productRam);
         formdata.append('size', formFields.size);
         formdata.append('productWeight', formFields.productWeight);
-        formdata.append('location', formFields.location);
 
 
         formFields.images = appendedArray
@@ -437,14 +405,24 @@ const ProductUpload = () => {
             return false;
         }
 
-        if (formFields.oldPrice === null) {
+        const regex = /^\d+$/;
+        if (!regex.test(formFields.price)) {
             context.setAlertBox({
                 open: true,
-                msg: 'please add product oldPrice',
+                msg: 'please input a number for product price',
                 error: true
             });
             return false;
         }
+
+        // if (formFields.oldPrice === null) {
+        //     context.setAlertBox({
+        //         open: true,
+        //         msg: 'please add product oldPrice',
+        //         error: true
+        //     });
+        //     return false;
+        // }
 
         if (formFields.category === "") {
             context.setAlertBox({
@@ -491,14 +469,14 @@ const ProductUpload = () => {
             return false;
         }
 
-        if (formFields.discount === null) {
-            context.setAlertBox({
-                open: true,
-                msg: 'please select the product discount',
-                error: true
-            });
-            return false;
-        }
+        // if (formFields.discount === null) {
+        //     context.setAlertBox({
+        //         open: true,
+        //         msg: 'please select the product discount',
+        //         error: true
+        //     });
+        //     return false;
+        // }
 
 
         if (previews.length === 0) {
@@ -694,35 +672,12 @@ const ProductUpload = () => {
                                     <div className='col-md-4'>
                                         <div className='form-group'>
                                             <h6>DISCOUNT</h6>
-                                            <input type='text' name="discount" value={formFields.discount} onChange={inputChange} />
+                                            <input type='text' name="discount" value={(formFields.oldPrice != null ? formFields.discount : null)} readOnly/>
                                         </div>
                                     </div>
 
 
-                                    {/* <div className='col-md-4'>
-                                        <div className='form-group'>
-                                            <h6>PRODUCT RAMS</h6>
-                                            <Select
-                                                multiple
-                                                value={productRams}
-                                                onChange={handleChangeProductRams}
-                                                displayEmpty
-                                                className='w-100'
-
-                                                MenuProps={MenuProps}
-                                            >
-
-                                                {
-                                                    productRAMSData?.map((item, index) => {
-                                                        return (
-                                                            <MenuItem value={item.productRam}>{item.productRam}</MenuItem>
-                                                        )
-                                                    })
-                                                }
-
-                                            </Select>
-                                        </div>
-                                    </div> */}
+                                    
 
                                 </div>
 

@@ -302,12 +302,15 @@ const Dashboard = () => {
                                                 </td>
 
                                                 <td>{item?.category?.name}</td>
-                                                <td>{item?.subCat?.subCat}</td>
+                                                <td>{item?.subCat}</td>
                                                 <td>{item?.brand}</td>
                                                 <td>
-                                                    <div style={{ width: '70px' }}>
-                                                        <del className="old">{item?.oldPrice} đ</del>
-                                                        <span className="new text-danger">{item?.price} đ</span>
+                                                    <div style={{ width: '70px' }}> 
+                                                        {
+                                                            item?.oldPrice != null && (<del className="old">{item?.oldPrice.toLocaleString()} đ</del>)
+                                                        }
+                                                        
+                                                        <span className="new text-danger">{item?.price.toLocaleString()} đ</span>
                                                     </div>
                                                 </td>
                                                 <td><Rating name="read-only" defaultValue={item?.rating} precision={0.5} size="small" readOnly /></td>

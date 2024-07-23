@@ -34,7 +34,7 @@ const QuantityBox = (props) => {
             context.setAlertBox({
                 open:true,
                 error:true,
-                msg:"The quantity is greater than product count in stock"
+                msg:"Không thể chọn số lượng nhiều hơn số lượng trong kho"
             })
         }
     }

@@ -93,7 +93,7 @@ const ProductItem = (props) => {
                     context.setAlertBox({
                         open:true,
                         error:false,
-                        msg:"the product added in my list"
+                        msg:"Sản phẩm đã được thêm vào yêu thích!"
                     })
 
 
@@ -118,7 +118,7 @@ const ProductItem = (props) => {
             context.setAlertBox({
                 open:true,
                 error:true,
-                msg:"Please Login to continue"
+                msg:"Vui lòng đăng nhập để tiếp tục."
             }) 
         }
   
@@ -167,8 +167,10 @@ const ProductItem = (props) => {
 
 
                     </Link>
-
-                    <span className="badge badge-primary">{props.item?.discount}%</span>
+                    {
+                        props.item?.discount !== null && (<span className="badge badge-primary">{props.item?.discount}%</span>)
+                    }
+                    
                     <div className="actions">
                         <Button onClick={() => viewProductDetails(props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id)}><TfiFullscreen /></Button>
                         
@@ -198,8 +200,10 @@ const ProductItem = (props) => {
                     <Rating className="mt-2 mb-2" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
 
                     <div className="d-flex">
-                        <span className="oldPrice">{props?.item?.oldPrice} đ</span>
-                        <span className="netPrice text-danger ml-2">{props?.item?.price} đ</span>
+                        {
+                            props?.item?.oldPrice !== null && (<span className="oldPrice mr-2">{(props?.item?.oldPrice).toLocaleString()} đ</span>)
+                        }
+                        <span className="netPrice text-danger">{(props?.item?.price).toLocaleString()} đ</span>
                     </div>
 
 

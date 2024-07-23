@@ -648,7 +648,7 @@ body.dark .main .sidebarWrapper .sidebar ul .submenu li a:hover {
   width: 100%;
   height: 130px;
   padding: 25px;
-  background: #bcd2fd;
+  background: #fff;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -669,7 +669,7 @@ body.dark .logoutWrapper .logoutBox {
 
 
 
-.logoutWrapper .logoutBox::before {
+/* .logoutWrapper .logoutBox::before {
   content: '';
   width: 70px;
   height: 70px;
@@ -679,9 +679,9 @@ body.dark .logoutWrapper .logoutBox {
   top: -20px;
   right: -20px;
   opacity: 0.5;
-}
+} */
 
-.logoutWrapper .logoutBox::after {
+/* .logoutWrapper .logoutBox::after {
   content: '';
   width: 30px;
   height: 30px;
@@ -691,7 +691,7 @@ body.dark .logoutWrapper .logoutBox {
   top: 20px;
   left: 10px;
   opacity: 0.5;
-}
+} */
 
 .logoutWrapper .logoutBox button {
   font-size: 14px !important;

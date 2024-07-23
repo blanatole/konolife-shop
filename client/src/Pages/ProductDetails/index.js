@@ -47,7 +47,7 @@ const ProductDetails = () => {
         fetchDataFromApi(`/api/products/${id}`).then((res) => {
             setProductData(res);
 
-            if (res?.productRam.length === 0 && res?.productWeight.length === 0 && res?.size.length === 0) {
+            if (res?.productWeight.length === 0 && res?.size.length === 0) {
                 setActiveSize(1);
             }
 
@@ -246,7 +246,7 @@ const ProductDetails = () => {
                                     <div className="d-flex align-items-center">
                                         <Rating name="read-only" value={parseInt(productData?.rating)} precision={0.5} readOnly size="small" />
 
-                                        <span className="text-light cursor ml-2" onClick={gotoReviews}>{reviewsData?.length} Review</span>
+                                        <span className="text-light cursor ml-2" onClick={gotoReviews}>{reviewsData?.length} Đánh giá</span>
                                     </div>
                                 </li>
 
@@ -255,8 +255,11 @@ const ProductDetails = () => {
 
 
                             <div className="d-flex info mb-3">
-                                <span className="oldPrice">Rs: {productData?.oldPrice}</span>
-                                <span className="netPrice text-danger ml-2">Rs: {productData?.price}</span>
+                                {
+                                    productData?.oldPrice != null && (<span className="oldPrice mr-2">{productData?.oldPrice} đ</span>)
+                                }
+                                
+                                <span className="netPrice text-danger">{productData?.price} đ</span>
                             </div>
 
                             {
@@ -268,26 +271,9 @@ const ProductDetails = () => {
 
 
 
-                            <p className="mt-3">Rs: {productData?.description}
+                            <p className="mt-3">{productData?.description}
                             </p>
 
-
-                            {
-                                productData?.productRam?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>RAM:</span>
-                                    <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
-                                        {
-                                            productData?.productRam?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                            }
 
 
                             {
@@ -333,12 +319,12 @@ const ProductDetails = () => {
                                 <Button className="btn-blue btn-lg btn-big btn-round bg-red" onClick={() => addtoCart()}>
                                     <BsCartFill /> &nbsp;
                                     {
-                                        context.addingInCart === true ? "adding..." : " Add to cart"
+                                        context.addingInCart === true ? "Đang thêm..." : " Thêm vào giỏ hàng"
                                     }
 
                                 </Button>
 
-                                <Tooltip title={`${isAddedToMyList === true ? 'Added to Wishlist' : 'Add to Wishlist'}`} placement="top">
+                                <Tooltip title={`${isAddedToMyList === true ? 'Đã yêu thích' : 'Yêu thích'}`} placement="top">
                                     <Button className={`btn-blue btn-lg btn-big btn-circle ml-4`} onClick={() => addToMyList(id)}>
                                         {
                                             isAddedToMyList === true ? <FaHeart className="text-danger" />
@@ -350,7 +336,7 @@ const ProductDetails = () => {
                                     </Button>
                                 </Tooltip>
 
-                                <Tooltip title="Add to Compare" placement="top">
+                                <Tooltip title="So sánh" placement="top">
                                     <Button className="btn-blue btn-lg btn-big btn-circle ml-2">
                                         <MdOutlineCompareArrows />
                                     </Button>
@@ -377,23 +363,23 @@ const ProductDetails = () => {
                                         onClick={() => {
                                             setActiveTabs(0)
                                         }}
-                                    >Description</Button>
+                                    >Mô tả</Button>
                                 </li>
-                                <li className='list-inline-item'>
+                                {/* <li className='list-inline-item'>
                                     <Button className={`${activeTabs === 1 && 'active'}`}
                                         onClick={() => {
                                             setActiveTabs(1)
 
                                         }}
                                     >Additional info</Button>
-                                </li>
+                                </li> */}
                                 <li className='list-inline-item'>
                                     <Button className={`${activeTabs === 2 && 'active'}`}
                                         onClick={() => {
                                             setActiveTabs(2)
 
                                         }}
-                                    >Reviews ({reviewsData?.length})</Button>
+                                    >Đánh giá ({reviewsData?.length})</Button>
                                 </li>
 
                             </ul>
@@ -516,7 +502,7 @@ const ProductDetails = () => {
                                 <div className='tabContent'>
                                     <div className='row'>
                                         <div className='col-md-8'>
-                                            <h3>Customer questions & answers</h3>
+                                            <h3>Câu hỏi của khách hàng và đánh giá</h3>
                                             <br />
 
 
@@ -554,9 +540,9 @@ const ProductDetails = () => {
 
                                             <form className='reviewForm' onSubmit={addReview}>
 
-                                                <h4>Add a review</h4>
+                                                <h4>Thêm đánh giá</h4>
                                                 <div className='form-group'>
-                                                    <textarea className='form-control shadow' placeholder='Write a Review'
+                                                    <textarea className='form-control shadow' placeholder='Viết đánh giá'
                                                         name='review' value={reviews.review} onChange={onChangeInput} ></textarea>
                                                 </div>
 
@@ -576,7 +562,7 @@ const ProductDetails = () => {
                                                 <br />
                                                 <div className='form-group'>
                                                     <Button type='submit' className='btn-blue btn-lg btn-big btn-round'>
-                                                        {isLoading === true ? <CircularProgress color="inherit" className="loader" /> : 'Submit Review'}
+                                                        {isLoading === true ? <CircularProgress color="inherit" className="loader" /> : 'Gửi đánh giá'}
 
                                                     </Button>
                                                 </div>

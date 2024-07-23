@@ -64,12 +64,6 @@ const recentlyViewdSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    productRam: [
-        {
-            type: String,
-            default: null,
-        }
-    ],
     size: [
         {
             type: String,

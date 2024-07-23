@@ -22,7 +22,9 @@ const ProductZoom = (props) => {
     return (
         <div className="productZoom">
             <div className='productZoom productZoomBig position-relative mb-3'>
-                <div className='badge badge-primary'>{props?.discount}%</div>
+                {
+                    props?.discount != null && (<div className='badge badge-primary'>{props?.discount}%</div>)
+                }
                 <Swiper
                     slidesPerView={1}
                     spaceBetween={0}
@@ -31,6 +33,7 @@ const ProductZoom = (props) => {
                     modules={[Navigation]}
                     className="zoomSliderBig"
                     ref={zoomSliderBig}
+                    
                 >
                     {
                         props?.images?.map((img, index) => {

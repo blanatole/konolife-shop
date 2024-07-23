@@ -16,7 +16,6 @@ import CategoryAdd from "./pages/Category/addCategory";
 import EditCategory from "./pages/Category/editCategory";
 import SubCatAdd from "./pages/Category/addSubCat";
 import SubCatList from "./pages/Category/subCategoryList";
-import AddProductRAMS from "./pages/Products/addProductRAMS";
 import ProductWeight from "./pages/Products/addProductWeight";
 import  ProductSize from './pages/Products/addProductSize';
 import  Orders from './pages/Orders';
@@ -206,7 +205,6 @@ function App() {
               <Route path="/category/edit/:id" exact={true} element={<EditCategory />} />
               <Route path="/subCategory/" exact={true} element={<SubCatList />} />
               <Route path="/subCategory/add" exact={true} element={<SubCatAdd />} />
-              <Route path="/productRAMS/add" exact={true} element={<AddProductRAMS />} />
               <Route path="/productWEIGHT/add" exact={true} element={<ProductWeight />} />
               <Route path="/productSIZE/add" exact={true} element={<ProductSize />} />
               <Route path="/orders/" exact={true} element={<Orders />} />

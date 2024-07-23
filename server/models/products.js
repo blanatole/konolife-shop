@@ -26,7 +26,8 @@ const productSchema = mongoose.Schema({
     },
     oldPrice: {
         type: Number,
-        default: 0
+        default: 0,
+        require: false
     },
     catName:{
         type:String,
@@ -63,14 +64,8 @@ const productSchema = mongoose.Schema({
     },
     discount: {
         type: Number,
-        required: true,
+        required: false,
     },
-    productRam: [
-        {
-            type: String,
-            default: null,
-        }
-    ],
     size: [
         {
             type: String,

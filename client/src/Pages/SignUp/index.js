@@ -63,6 +63,16 @@ const SignUp = () => {
         return false;
       }
 
+      const regexe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!regexe.test(formfields.email)) {
+        context.setAlertBox({
+          open: true,
+          error: true,
+          msg: "Please enter the correct email format!"
+        })
+        return false;
+      }
+
       if (formfields.phone === "") {
         context.setAlertBox({
           open: true,
@@ -72,12 +82,42 @@ const SignUp = () => {
         return false;
       }
 
+      const regex = /^\d+$/;
+      if (!regex.test(formfields.phone)) {
+        context.setAlertBox({
+          open: true,
+          error: true,
+          msg: "phone numbers containing only digits!"
+        })
+        return false;
+      }
+
+      if (formfields.phone.length != 10) {
+        context.setAlertBox({
+          open: true,
+          error: true,
+          msg: "Please enter 10 characters of your phone number!"
+        })
+        return false;
+      }
+
+
       if (formfields.password === "") {
         context.setAlertBox({
           open: true,
           error: true,
           msg: "password can not be blank!",
         });
+        return false;
+      }
+
+      const regex2 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}$/;
+      if (!regex2.test(formfields.password)) {
+        context.setAlertBox({
+          open: true,
+          error: true,
+          msg: "Passwords must be longer than 6 characters, including numbers, lowercase letters and uppercase letters!"
+        })
         return false;
       }
 
@@ -89,7 +129,7 @@ const SignUp = () => {
             context.setAlertBox({
               open: true,
               error: false,
-              msg: "Register Successfully!",
+              msg: "Đăng ký thành công!",
             });
 
             setTimeout(() => {
@@ -125,11 +165,11 @@ const SignUp = () => {
         const user = result.user;
 
         const fields = {
-            name:user.providerData[0].displayName,
-            email: user.providerData[0].email,
-            password: null,
-            images:user.providerData[0].photoURL,
-            phone:user.providerData[0].phoneNumber
+          name: user.providerData[0].displayName,
+          email: user.providerData[0].email,
+          password: null,
+          images: user.providerData[0].photoURL,
+          phone: user.providerData[0].phoneNumber
         };
 
         postData("/api/user/authWithGoogle", fields).then((res) => {
@@ -153,9 +193,9 @@ const SignUp = () => {
 
               setTimeout(() => {
                 history("/");
-                  context.setIsLogin(true);
-                  setIsLoading(false);
-                  context.setisHeaderFooterShow(true);
+                context.setIsLogin(true);
+                setIsLoading(false);
+                context.setisHeaderFooterShow(true);
               }, 2000);
             } else {
               context.setAlertBox({
@@ -219,17 +259,17 @@ const SignUp = () => {
       <div className="container">
         <div className="box card p-3 shadow border-0">
           <div className="text-center">
-            <img style={{width: 180}} src={Logo} />
+            <img style={{ width: 180 }} src={Logo} />
           </div>
 
           <form className="mt-2" onSubmit={register}>
-            <h2 className="mb-3">Sign Up</h2>
+            <h2 className="mb-3">Đăng ký</h2>
 
             <div className="row">
               <div className="col-md-6">
                 <div className="form-group">
                   <TextField
-                    label="Name"
+                    label="Tên"
                     name="name"
                     onChange={onchangeInput}
                     type="text"
@@ -242,7 +282,7 @@ const SignUp = () => {
               <div className="col-md-6">
                 <div className="form-group">
                   <TextField
-                    label="Phone No."
+                    label="Số điện thoại"
                     name="phone"
                     onChange={onchangeInput}
                     type="text"
@@ -267,7 +307,7 @@ const SignUp = () => {
             <div className="form-group">
               <TextField
                 id="standard-basic"
-                label="Password"
+                label="Mật khẩu"
                 name="password"
                 onChange={onchangeInput}
                 type="password"
@@ -276,7 +316,6 @@ const SignUp = () => {
               />
             </div>
 
-            <a className="border-effect cursor txt">Forgot Password?</a>
 
             <div className="d-flex align-items-center mt-3 mb-3 ">
               <div className="row w-100">
@@ -286,7 +325,7 @@ const SignUp = () => {
                     disabled={isLoading === true ? true : false}
                     className="btn-blue w-100 btn-lg btn-big"
                   >
-                    {isLoading === true ? <CircularProgress /> : "Sign Up"}
+                    {isLoading === true ? <CircularProgress /> : "Đăng ký"}
                   </Button>
                 </div>
                 <div className="col-md-6 pr-0">
@@ -297,7 +336,7 @@ const SignUp = () => {
                       variant="outlined"
                       onClick={() => context.setisHeaderFooterShow(true)}
                     >
-                      Cancel
+                      Quay lại
                     </Button>
                   </Link>
                 </div>
@@ -305,14 +344,14 @@ const SignUp = () => {
             </div>
 
             <p className="txt">
-              Not Registered?{" "}
+              Đã có tài khoản?{" "}
               <Link to="/signIn" className="border-effect">
-                Sign In
+                Đăng nhập
               </Link>
             </p>
 
             <h6 className="mt-4 text-center font-weight-bold">
-              Or continue with social account
+              Hoặc tiếp tục với cách khác
             </h6>
 
             <Button
@@ -320,7 +359,7 @@ const SignUp = () => {
               variant="outlined"
               onClick={signInWithGoogle}
             >
-              <img src={GoogleImg} /> Sign In with Google
+              <img src={GoogleImg} /> Đăng nhập với Google
             </Button>
           </form>
         </div>

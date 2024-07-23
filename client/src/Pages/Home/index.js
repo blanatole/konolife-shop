@@ -113,7 +113,7 @@ const Home = () => {
                 <div className="info" style={{ width: "35%" }}>
                   <h3 className="mb-0 hd">Popular Products</h3>
                   <p className="text-light text-sml mb-0">
-                    Do not miss the current offers until the end of March.
+                    Do not miss the current offers until the end of July.
                   </p>
                 </div>
 
@@ -236,7 +236,7 @@ const Home = () => {
                 <div className="info">
                   <h3 className="mb-0 hd">featured products</h3>
                   <p className="text-light text-sml mb-0">
-                    Do not miss the current offers until the end of March.
+                    Do not miss the current offers until the end of July.
                   </p>
                 </div>
               </div>

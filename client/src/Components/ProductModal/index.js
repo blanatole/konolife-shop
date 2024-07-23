@@ -26,7 +26,7 @@ const ProductModal = (props) => {
     const context = useContext(MyContext);
 
     useEffect(() => {
-        if (props?.data?.productRam.length === 0 && props?.data?.productWeight.length === 0 && props?.data?.size.length === 0) {
+        if (props?.data?.productWeight.length === 0 && props?.data?.size.length === 0) {
             setActiveSize(1);
         }
 
@@ -119,7 +119,7 @@ const ProductModal = (props) => {
                     context.setAlertBox({
                         open: true,
                         error: false,
-                        msg: "the product added in my list"
+                        msg: "Sản phẩm đã được thêm vào giỏ hàng!"
                     })
                 } else {
                     context.setAlertBox({
@@ -134,7 +134,7 @@ const ProductModal = (props) => {
             context.setAlertBox({
                 open: true,
                 error: true,
-                msg: "Please Login to continue"
+                msg: "Vui lòng đăng nhập để tiếp tục."
             })
         }
 
@@ -166,32 +166,18 @@ const ProductModal = (props) => {
 
                     <div className='col-md-7'>
                         <div className='d-flex info align-items-center mb-3'>
-                            <span className='oldPrice lg mr-2'>Rs: {props?.data?.oldPrice}</span>
-                            <span className='netPrice text-danger lg'>Rs: {props?.data?.price}</span>
+                            {
+                                props?.data?.oldPrice != null && (<span className='oldPrice lg mr-2'>{props?.data?.oldPrice.toLocaleString()} đ</span>)
+                            }
+                            
+                            <span className='netPrice text-danger lg'>{props?.data?.price.toLocaleString()} đ</span>
                         </div>
 
                         <span className="badge bg-success">IN STOCK</span>
 
-                        <p className='mt-3'>Rs: {props?.data?.description}</p>
+                        <p className='mt-3'>{props?.data?.description} đ</p>
 
 
-
-                        {
-                            props?.data?.productRam?.length !== 0 &&
-                            <div className='productSize d-flex align-items-center'>
-                                <span>RAM:</span>
-                                <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
-                                    {
-                                        props?.data?.productRam?.map((item, index) => {
-                                            return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
-                                            )
-                                        })
-                                    }
-
-                                </ul>
-                            </div>
-                        }
 
 
                         {
@@ -236,7 +222,7 @@ const ProductModal = (props) => {
 
                             <Button className='btn-blue bg-red btn-lg btn-big btn-round ml-3' onClick={() => addtoCart()}><IoCartSharp />
                                 {
-                                    context.addingInCart === true ? "adding..." : " Add to cart"
+                                    context.addingInCart === true ? "Đang thêm..." : " Thêm vào giỏ hàng"
                                 }
                             </Button>
                         </div>
@@ -249,20 +235,20 @@ const ProductModal = (props) => {
                                     isAddedToMyList === true ?
                                     <>
                                         <FaHeart className="text-danger" />
-                                        &nbsp; ADDED TO WISHLIST
+                                        &nbsp; ĐÃ YÊU THÍCH
                                     </>
 
                                     :
 
                                 <>
                                     <IoIosHeartEmpty />
-                                    &nbsp; ADD TO WISHLIST
+                                    &nbsp; YÊU THÍCH
                                 </>
                                 }
 
 
                             </Button>
-                            <Button className='btn-round btn-sml ml-3' variant="outlined"><MdOutlineCompareArrows /> &nbsp; COMPARE</Button>
+                            <Button className='btn-round btn-sml ml-3' variant="outlined"><MdOutlineCompareArrows /> &nbsp; SO SÁNH</Button>
                         </div>
 
                     </div>

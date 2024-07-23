@@ -97,7 +97,7 @@ const Navigation = (props) => {
               )}
               <li className="list-inline-item" onClick={props.closeNav}>
                 <Link to="/">
-                  <Button>Home</Button>
+                  <Button>Trang chủ</Button>
                 </Link>
               </li>
               {props.navData

@@ -63,7 +63,7 @@ const Sidebar = () => {
                             <Button className={`w-100 ${activeTab === 0 ? 'active' : ''}`} onClick={() => isOpenSubmenu(0)}>
                                 <span className='icon'><MdDashboard /></span>
                                 Dashboard
-                             
+
                             </Button>
                         </NavLink>
                     </li>
@@ -76,7 +76,7 @@ const Sidebar = () => {
                         <div className={`submenuWrapper ${activeTab === 1 && isToggleSubmenu === true ? 'colapse' : 'colapsed'}`}>
                             <ul className='submenu'>
                                 <li><NavLink exact activeClassName='is-active' to="/products">Product List</NavLink></li>
-                               
+
                                 <li><NavLink exact activeClassName='is-active' to="/product/upload">Product Upload</NavLink></li>
                                 {/* <li><NavLink exact activeClassName='is-active' to="/productRAMS/add">Add Product RAMS</NavLink></li> */}
                                 <li><NavLink exact activeClassName='is-active' to="/productWEIGHT/add">Add Product WEIGHT</NavLink></li>

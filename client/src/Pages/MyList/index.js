@@ -66,8 +66,8 @@ const MyList = () => {
                 <div className="container">
 
                     <div className="myListTableWrapper">
-                        <h2 className="hd mb-1">My List</h2>
-                        <p>There are <b className="text-red">{myListData?.length}</b> products in your My List</p>
+                        <h2 className="hd mb-1">Danh sách yêu thích của tôi</h2>
+                        <p>Bạn có <b className="text-red">{myListData?.length}</b> sản phẩm trong danh sách của bạn</p>
                         {
                             myListData?.length !== 0 ?
 
@@ -78,9 +78,9 @@ const MyList = () => {
                                             <table className="table">
                                                 <thead>
                                                     <tr>
-                                                        <th width="50%">Product</th>
-                                                        <th width="15%">Unit Price</th>
-                                                        <th width="10%">Remove</th>
+                                                        <th width="50%">Sản phẩm</th>
+                                                        <th width="15%">Đơn giá</th>
+                                                        <th width="10%">Xóa</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -107,7 +107,7 @@ const MyList = () => {
                                                                             </div>
                                                                         </Link>
                                                                     </td>
-                                                                    <td width="15%">Rs {item?.price}</td>
+                                                                    <td width="15%">{item?.price.toLocaleString()} đ</td>
 
 
                                                                     <td width="10%"><span className="remove" onClick={() => removeItem(item?._id)}><IoIosClose /></span></td>
@@ -129,9 +129,9 @@ const MyList = () => {
 
                                 <div className="empty d-flex align-items-center justify-content-center flex-column">
                                     <img src={emprtCart} width="150" />
-                                    <h3>My List is currently empty</h3>
+                                    <h3>Danh sách yêu thích của bạn đang trống....</h3>
                                     <br />
-                                    <Link to="/"> <Button className='btn-blue bg-red btn-lg btn-big btn-round'><FaHome /> &nbsp; Continue Shopping</Button></Link>
+                                    <Link to="/"> <Button className='btn-blue bg-red btn-lg btn-big btn-round'><FaHome /> &nbsp; Tiếp tục mua sắm</Button></Link>
                                 </div>
 
 

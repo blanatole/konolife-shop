@@ -53,7 +53,7 @@ const CountryDropdown = () => {
                 setcountryList(context.countryList);
             }}>
                 <div className='info d-flex flex-column'>
-                    <span className='label'>Your Location</span>
+                    <span className='label'>Khu vực</span>
                     <span className='name'>{context.selectedCountry !== "" ? context.selectedCountry.length > 10 ? context.selectedCountry?.substr(0, 10) + '...' : context.selectedCountry : 'Select Location'}</span>
                 </div>
                 <span className='ml-auto'><FaAngleDown /></span>
@@ -61,17 +61,17 @@ const CountryDropdown = () => {
 
 
             <Dialog open={isOpenModal} onClose={() => setisOpenModal(false)} className='locationModal' TransitionComponent={Transition}>
-                <h4 className='mb-0'>Choose your Delivery Location</h4>
-                <p>Enter your address and we will specify the offer for your area.</p>
+                <h4 className='mb-0'>Chọn khu vực giao hàng</h4>
+                <p>Chọn khu vực của bạn để có những ưu đãi đặc biệt.</p>
                 <Button className='close_' onClick={() => setisOpenModal(false)}><MdClose /></Button>
 
                 <div className='headerSearch w-100'>
-                    <input type='text' placeholder='Search your area...' onChange={filterList} />
+                    <input type='text' placeholder='Tìm kiếm...' onChange={filterList} />
                     <Button><IoIosSearch /></Button>
                 </div>
 
                 <ul className='countryList mt-3'>
-                    <li><Button onClick={() => selectCountry(0, "All")}
+                    <li><Button onClick={() => selectCountry(0, "Tất cả")}
                     >All</Button></li>
                     {
                         countryList?.length !== 0 && countryList?.map((item, index) => {

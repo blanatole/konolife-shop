@@ -87,11 +87,40 @@ const SignUp = () => {
                 return false;
             }
 
+            const regexe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!regexe.test(formfields.email)) {
+                context.setAlertBox({
+                    open: true,
+                    error: true,
+                    msg: "Please enter the correct email format!"
+                })
+                return false;
+            }
+
             if (formfields.phone === "") {
                 context.setAlertBox({
                     open: true,
                     error: true,
                     msg: "phone can not be blank!"
+                })
+                return false;
+            }
+
+            const regex = /^\d+$/;
+            if (!regex.test(formfields.phone)) {
+                context.setAlertBox({
+                    open: true,
+                    error: true,
+                    msg: "phone numbers containing only digits!"
+                })
+                return false;
+            }
+
+            if (formfields.phone.length != 10) {
+                context.setAlertBox({
+                    open: true,
+                    error: true,
+                    msg: "Please enter 10 characters of your phone number!"
                 })
                 return false;
             }
@@ -104,6 +133,17 @@ const SignUp = () => {
                 })
                 return false;
             }
+            
+            const regex2 = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}$/;
+            if (!regex2.test(formfields.password)) {
+                context.setAlertBox({
+                    open: true,
+                    error: true,
+                    msg: "Passwords must be longer than 6 characters, including numbers, lowercase letters and uppercase letters!"
+                })
+                return false;
+            }
+
 
             if (formfields.confirmPassword === "") {
                 context.setAlertBox({
@@ -113,6 +153,8 @@ const SignUp = () => {
                 })
                 return false;
             }
+
+            
 
             if (formfields.confirmPassword !== formfields.password) {
                 context.setAlertBox({

@@ -144,7 +144,8 @@ const Category = () => {
                                                 </td>
                                                 <td>
                                                     <div className="actions d-flex align-items-center">
-                                                        <Link to={`/category/edit/${item._id}`}   >                                         <Button className="success" color="success"><FaPencilAlt /></Button>
+                                                        <Link to={`/category/edit/${item._id}`}   >
+                                                            <Button className="success" color="success"><FaPencilAlt /></Button>
                                                         </Link>
 
                                                         <Button className="error" color="error" onClick={() => deleteCat(item._id)}><MdDelete /></Button>

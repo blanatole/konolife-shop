@@ -65,11 +65,9 @@ const EditUpload = () => {
     const [categoryVal, setcategoryVal] = useState('');
     const [subCatVal, setSubCatVal] = useState('');
 
-    const [productRams, setProductRAMS] = useState([]);
     const [productWeight, setProductWeight] = useState([]);
     const [productSize, setProductSize] = useState([]);
 
-    const [productRAMSData, setProductRAMSData] = useState([]);
     const [productWEIGHTData, setProductWEIGHTData] = useState([]);
     const [productSIZEData, setProductSIZEData] = useState([]);
 
@@ -106,7 +104,6 @@ const EditUpload = () => {
         rating: 0,
         isFeatured: null,
         discount: 0,
-        productRam: [],
         size: [],
         productWeight: [],
         location:""
@@ -167,7 +164,6 @@ const EditUpload = () => {
                 rating: res.rating,
                 isFeatured: res.isFeatured,
                 discount: res.discount,
-                productRam: res.productRam,
                 size: res.size,
                 productWeight: res.productWeight,
                 location:res.location
@@ -181,7 +177,6 @@ const EditUpload = () => {
             setcategoryVal(res.category?._id);
             setSubCatVal(res.subCatId)
             setisFeaturedValue(res.isFeatured);
-            setProductRAMS(res.productRam);
             setProductSize(res.size);
             setProductWeight(res.productWeight);
             setPreviews(res.images);
@@ -192,9 +187,6 @@ const EditUpload = () => {
 
         fetchDataFromApi("/api/productWeight").then((res) => {
             setProductWEIGHTData(res);
-        });
-        fetchDataFromApi("/api/productRAMS").then((res) => {
-            setProductRAMSData(res);
         });
         fetchDataFromApi("/api/productSIZE").then((res) => {
             setProductSIZEData(res);
@@ -240,27 +232,7 @@ const EditUpload = () => {
 
 
 
-    const handleChangeProductRams = (event) => {
-        // setProductRAMS(event.target.value);
-        // setFormFields(() => ({
-        //     ...formFields,
-        //     productRam: event.target.value
-        // }))
-
-        const {
-            target: { value },
-        } = event;
-        setProductRAMS(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
-
-
-        formFields.productRam = value;
-
-
-
-    };
+    
 
 
     const handleChangeProductWeight = (event) => {
@@ -441,7 +413,6 @@ const EditUpload = () => {
         formdata.append('rating', formFields.rating);
         formdata.append('isFeatured', formFields.isFeatured);
         formdata.append('discount', formFields.discount);
-        formdata.append('productRam', formFields.productRam);
         formdata.append('size', formFields.size);
         formdata.append('productWeight', formFields.productWeight);
         formdata.append('location', formFields.location);
@@ -488,14 +459,14 @@ const EditUpload = () => {
             return false;
         }
 
-        if (formFields.oldPrice === null) {
-            context.setAlertBox({
-                open: true,
-                msg: 'please add product oldPrice',
-                error: true
-            });
-            return false;
-        }
+        // if (formFields.oldPrice === null) {
+        //     context.setAlertBox({
+        //         open: true,
+        //         msg: 'please add product oldPrice',
+        //         error: true
+        //     });
+        //     return false;
+        // }
 
         if (formFields.category === "") {
             context.setAlertBox({
@@ -524,14 +495,14 @@ const EditUpload = () => {
             return false;
         }
 
-        if (formFields.rating === 0) {
-            context.setAlertBox({
-                open: true,
-                msg: 'please select product rating',
-                error: true
-            });
-            return false;
-        }
+        // if (formFields.rating === 0) {
+        //     context.setAlertBox({
+        //         open: true,
+        //         msg: 'please select product rating',
+        //         error: true
+        //     });
+        //     return false;
+        // }
 
         if (formFields.isFeatured === null) {
             context.setAlertBox({
@@ -542,14 +513,14 @@ const EditUpload = () => {
             return false;
         }
 
-        if (formFields.discount === null) {
-            context.setAlertBox({
-                open: true,
-                msg: 'please select the product discount',
-                error: true
-            });
-            return false;
-        }
+        // if (formFields.discount === null) {
+        //     context.setAlertBox({
+        //         open: true,
+        //         msg: 'please select the product discount',
+        //         error: true
+        //     });
+        //     return false;
+        // }
 
 
         if (previews.length === 0) {
@@ -756,31 +727,6 @@ const EditUpload = () => {
                                     </div>
 
 
-                                    <div className='col-md-4'>
-                                        <div className='form-group'>
-                                            <h6>PRODUCT RAMS</h6>
-                                            <Select
-                                                multiple
-                                                value={productRams}
-                                                onChange={handleChangeProductRams}
-                                                displayEmpty
-                                                className='w-100'
-
-                                                MenuProps={MenuProps}
-                                            >
-
-                                                {
-                                                    productRAMSData?.map((item, index) => {
-                                                        return (
-                                                            <MenuItem value={item.productRam}>{item.productRam}</MenuItem>
-                                                        )
-                                                    })
-                                                }
-
-                                            </Select>
-                                        </div>
-                                    </div>
-
                                 </div>
 
                                 <div className='row'>
@@ -833,7 +779,7 @@ const EditUpload = () => {
                                         </div>
                                     </div>
 
-                                    <div className='col-md-4'>
+                                    {/* <div className='col-md-4'>
                                         <div className='form-group'>
                                             <h6>RATINGS</h6>
                                             <Rating
@@ -848,14 +794,14 @@ const EditUpload = () => {
                                                 }}
                                             />
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                 </div>
 
 
 
 
-                                <div className="row">
+                                {/* <div className="row">
                                     <div className='col-md-4'>
                                         <div className='form-group'>
                                             <h6>LOCATION</h6>
@@ -865,7 +811,7 @@ const EditUpload = () => {
                                             }
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
 
 
                             </div>

@@ -15,7 +15,7 @@ import Rating from '@mui/material/Rating';
 import { MyContext } from '../../App';
 
 const Sidebar = (props) => {
-    const [value, setValue] = useState([100, 100000]);
+    const [value, setValue] = useState([100000, 1000000]);
     const [value2, setValue2] = useState(0);
 
     const [subCatId, setSubCatId] = useState('');
@@ -57,7 +57,7 @@ const Sidebar = (props) => {
         <>
             <div className={`sidebar ${isOpenFilter===true && 'open'}`}>
                 <div className="filterBox">
-                    <h6>PRODUCT CATEGORIES</h6>
+                    <h6>DANH MỤC</h6>
 
                     <div className='scroll'>
                         <RadioGroup
@@ -84,20 +84,20 @@ const Sidebar = (props) => {
 
 
                 <div className="filterBox">
-                    <h6>FILTER BY PRICE</h6>
+                    <h6>GIÁ BÁN</h6>
 
-                    <RangeSlider value={value} onInput={setValue} min={100} max={60000} step={5} />
+                    <RangeSlider value={value} onInput={setValue} min={100000} max={1000000} step={100000} />
 
 
                     <div className='d-flex pt-2 pb-2 priceRange'>
-                        <span>From: <strong className='text-dark'>Rs: {value[0]}</strong></span>
-                        <span className='ml-auto'>From: <strong className='text-dark'>Rs: {value[1]}</strong></span>
+                        <span>From: <strong className='text-dark'>{value[0].toLocaleString()} đ</strong></span>
+                        <span className='ml-auto'>to: <strong className='text-dark'>{value[1].toLocaleString()} đ</strong></span>
                     </div>
                 </div>
 
 
                 <div className="filterBox">
-                    <h6>FILTER BY RATING</h6>
+                    <h6>ĐÁNH GIÁ</h6>
 
                     <div className='scroll pl-0'>
                         {
@@ -155,7 +155,7 @@ const Sidebar = (props) => {
 
                 <br />
 
-                <Link to="#"><img src='https://klbtheme.com/bacola/wp-content/uploads/2021/05/sidebar-banner.gif' className='w-100' /></Link>
+                {/* <Link to="#"><img src='https://klbtheme.com/bacola/wp-content/uploads/2021/05/sidebar-banner.gif' className='w-100' /></Link> */}
 
             </div>
         </>

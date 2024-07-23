@@ -140,38 +140,7 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
 
-                                    {
-                                        productData?.productRam?.length !== 0 &&
-                                        <div className="row">
-                                            <div className="col-sm-3 d-flex align-items-center">
-                                                <span className="icon"><MdFilterVintage /></span>
-                                                <span className="name">RAM</span>
-                                            </div>
-
-                                            <div className="col-sm-9">
-
-                                                : <span>
-                                                    <div className="row">
-                                                        <ul className="list list-inline tags sml">
-
-                                                            {
-                                                                productData?.productRam?.map((item, index) => {
-                                                                    return (
-                                                                        <li className="list-inline-item">
-                                                                            <span>{item}</span>
-                                                                        </li>
-                                                                    )
-                                                                })
-                                                            }
-
-
-                                                        </ul>
-                                                    </div>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    }
-
+                                
 
                                     {
                                         productData?.size?.length !== 0 &&
@@ -209,7 +178,7 @@ const ProductDetails = () => {
                                         <div className="row">
                                             <div className="col-sm-3 d-flex align-items-center">
                                                 <span className="icon"><MdFilterVintage /></span>
-                                                <span className="name">Khối lượng</span>
+                                                <span className="name">Weight</span>
                                             </div>
 
                                             <div className="col-sm-9">

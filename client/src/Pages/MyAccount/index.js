@@ -301,7 +301,7 @@ const MyAccount = () => {
   return (
     <section className="section myAccountPage">
       <div className="container">
-        <h2 className="hd">My Account</h2>
+        <h2 className="hd">Tài khoản của tôi</h2>
 
         <Box sx={{ width: "100%" }} className="myAccBox card border-0">
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -310,8 +310,8 @@ const MyAccount = () => {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Edit Profile" {...a11yProps(0)} />
-              <Tab label="Change Password" {...a11yProps(1)} />
+              <Tab label="Chỉnh sửa hồ sơ" {...a11yProps(0)} />
+              <Tab label="Đổi mật khẩu" {...a11yProps(1)} />
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
@@ -343,7 +343,7 @@ const MyAccount = () => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <TextField
-                          label="Name"
+                          label="Tên"
                           variant="outlined"
                           className="w-100"
                           name="name"
@@ -370,7 +370,7 @@ const MyAccount = () => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <TextField
-                          label="Phone"
+                          label="Số điện thoại"
                           variant="outlined"
                           className="w-100"
                           name="phone"
@@ -387,7 +387,7 @@ const MyAccount = () => {
                       className="btn-blue bg-red btn-lg btn-big"
                     >
                       {" "}
-                      Save
+                      Lưu
                     </Button>
                   </div>
                 </div>
@@ -402,7 +402,7 @@ const MyAccount = () => {
                     <div className="col-md-4">
                       <div className="form-group">
                         <TextField
-                          label="Old Password"
+                          label="Mật khẩu cũ"
                           variant="outlined"
                           className="w-100"
                           name="oldPassword"
@@ -414,7 +414,7 @@ const MyAccount = () => {
                     <div className="col-md-4">
                       <div className="form-group">
                         <TextField
-                          label="New password"
+                          label="Mật khẩu mới"
                           variant="outlined"
                           className="w-100"
                           name="password"
@@ -426,7 +426,7 @@ const MyAccount = () => {
                     <div className="col-md-4">
                       <div className="form-group">
                         <TextField
-                          label="Confirm Password"
+                          label="Xác nhận mật khẩu mới"
                           variant="outlined"
                           className="w-100"
                           name="confirmPassword"
@@ -442,7 +442,7 @@ const MyAccount = () => {
                       className="btn-blue bg-red btn-lg btn-big"
                     >
                       {" "}
-                      Save
+                      Lưu
                     </Button>
                   </div>
                 </div>

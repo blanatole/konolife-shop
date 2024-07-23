@@ -163,7 +163,7 @@ function App() {
           setAlertBox({
             open: true,
             error: false,
-            msg: "Item is added in the cart",
+            msg: "Sản phẩm đã được thêm vào giỏ hàng",
           });
 
           setTimeout(() => {
@@ -184,7 +184,7 @@ function App() {
       setAlertBox({
         open: true,
         error: true,
-        msg: "Please login first",
+        msg: "Vui lòng đăng nhập",
       });
     }
   };

@@ -38,7 +38,7 @@ const SearchBox = (props) => {
 
     return (
         <div className='headerSearch ml-3 mr-3'>
-            <input type='text' placeholder='Search for products...' onChange={onChangeValue} />
+            <input type='text' placeholder='Tìm kiếm sản phẩm...' onChange={onChangeValue} />
             <Button onClick={searchProducts}>
                 {
                     isLoading === true ? <CircularProgress /> : <IoIosSearch />

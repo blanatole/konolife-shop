@@ -120,6 +120,16 @@ const Checkout = () => {
             return false
         }
 
+        const regex = /^\d+$/;
+        if (!regex.test(formFields.zipCode)) {
+            context.setAlertBox({
+                open: true,
+                error: true,
+                msg: "Please only enter digit"
+            })
+            return false
+        }
+
         if (formFields.phoneNumber === "") {
             context.setAlertBox({
                 open: true,
@@ -129,11 +139,39 @@ const Checkout = () => {
             return false
         }
 
+        if (!regex.test(formFields.phoneNumber)) {
+            context.setAlertBox({
+                open: true,
+                error: true,
+                msg: "Please only enter digit"
+            })
+            return false
+        }
+
+        if (formFields.phoneNumber.length !== 10) {
+            context.setAlertBox({
+                open: true,
+                error: true,
+                msg: "Length of phone number must equal 10"
+            })
+            return false
+        }
+
         if (formFields.email === "") {
             context.setAlertBox({
                 open: true,
                 error: true,
                 msg: "Please fill email"
+            })
+            return false
+        }
+
+        const regexe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!regexe.test(formFields.email)) {
+            context.setAlertBox({
+                open: true,
+                error: true,
+                msg: "Please enter the correct email format (including @) !"
             })
             return false
         }
@@ -185,12 +223,12 @@ return (
             <form className='checkoutForm' onSubmit={checkout}>
                 <div className='row'>
                     <div className='col-md-8'>
-                        <h2 className='hd'>BILLING DETAILS</h2>
+                        <h2 className='hd'>THÔNG TIN ĐẶT HÀNG</h2>
 
                         <div className='row mt-3'>
                             <div className='col-md-12'>
                                 <div className='form-group'>
-                                    <TextField label="Full Name *" variant="outlined" className='w-100' size="small" name="fullName" onChange={onChangeInput} />
+                                    <TextField label="Họ tên *" variant="outlined" className='w-100' size="small" name="fullName" onChange={onChangeInput} />
                                 </div>
                             </div>
 
@@ -204,38 +242,38 @@ return (
                         </div>
 
 
-                        <h6>Street address *</h6>
+                        <h6>Địa chỉ *</h6>
 
                         <div className='row'>
                             <div className='col-md-12'>
                                 <div className='form-group'>
-                                    <TextField label="House number and street name" variant="outlined" className='w-100' size="small" name="streetAddressLine1" onChange={onChangeInput} />
+                                    <TextField label="Số nhà và tên đường" variant="outlined" className='w-100' size="small" name="streetAddressLine1" onChange={onChangeInput} />
                                 </div>
 
                                 <div className='form-group'>
-                                    <TextField label="Apartment, suite, unit, etc. (optional)" variant="outlined" className='w-100' size="small" name="streetAddressLine2" onChange={onChangeInput} />
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <h6>District *</h6>
-
-                        <div className='row'>
-                            <div className='col-md-12'>
-                                <div className='form-group'>
-                                    <TextField label="District" variant="outlined" className='w-100' size="small" name="district" onChange={onChangeInput} />
+                                    <TextField label="Ghi chú thêm..." variant="outlined" className='w-100' size="small" name="streetAddressLine2" onChange={onChangeInput} />
                                 </div>
 
                             </div>
                         </div>
 
-                        <h6>Town / City *</h6>
+                        <h6>Quận/Huyện *</h6>
 
                         <div className='row'>
                             <div className='col-md-12'>
                                 <div className='form-group'>
-                                    <TextField label="City" variant="outlined" className='w-100' size="small" name="city" onChange={onChangeInput} />
+                                    <TextField label="" variant="outlined" className='w-100' size="small" name="district" onChange={onChangeInput} />
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <h6>Tỉnh/Thành phố *</h6>
+
+                        <div className='row'>
+                            <div className='col-md-12'>
+                                <div className='form-group'>
+                                    <TextField label="" variant="outlined" className='w-100' size="small" name="city" onChange={onChangeInput} />
                                 </div>
 
                             </div>
@@ -244,12 +282,12 @@ return (
                         
 
 
-                        <h6>Postcode / ZIP *</h6>
+                        <h6>Mã bưu điện *</h6>
 
                         <div className='row'>
                             <div className='col-md-12'>
                                 <div className='form-group'>
-                                    <TextField label="ZIP Code" variant="outlined" className='w-100' size="small" name="zipCode" onChange={onChangeInput} />
+                                    <TextField label="" variant="outlined" className='w-100' size="small" name="zipCode" onChange={onChangeInput} />
                                 </div>
 
                             </div>
@@ -259,13 +297,13 @@ return (
                         <div className='row'>
                             <div className='col-md-6'>
                                 <div className='form-group'>
-                                    <TextField label="Phone Number" variant="outlined" className='w-100' size="small" name="phoneNumber" onChange={onChangeInput} />
+                                    <TextField label="Số điện thoại" variant="outlined" className='w-100' size="small" name="phoneNumber" onChange={onChangeInput} />
                                 </div>
                             </div>
 
                             <div className='col-md-6'>
                                 <div className='form-group'>
-                                    <TextField label="Email Address" variant="outlined" className='w-100' size="small" name="email" onChange={onChangeInput} />
+                                    <TextField label="Email" variant="outlined" className='w-100' size="small" name="email" onChange={onChangeInput} />
                                 </div>
                             </div>
 
@@ -276,13 +314,13 @@ return (
 
                     <div className='col-md-4'>
                         <div className='card orderInfo'>
-                            <h4 className='hd'>YOUR ORDER</h4>
+                            <h4 className='hd'>ĐƠN HÀNG</h4>
                             <div className='table-responsive mt-3'>
                                 <table className='table table-borderless'>
                                     <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Subtotal</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Thành tiền</th>
                                         </tr>
                                     </thead>
 
@@ -309,7 +347,7 @@ return (
 
 
                                         <tr>
-                                            <td>Subtotal </td>
+                                            <td>Tổng tiền </td>
 
                                             <td>
 
@@ -328,7 +366,7 @@ return (
                             </div>
 
                             <Button type="submit" className='btn-blue bg-red btn-lg btn-big'
-                            ><IoBagCheckOutline /> &nbsp; Checkout</Button>
+                            ><IoBagCheckOutline /> &nbsp; Đặt hàng</Button>
 
                         </div>
                     </div>
